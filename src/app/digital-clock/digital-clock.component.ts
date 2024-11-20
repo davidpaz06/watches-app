@@ -6,12 +6,30 @@ import { TimeService } from '../../services/time.service';
   standalone: true,
   imports: [],
   template: `
-    <h2>Digital Clock</h2>
-    {{ systemTime }}
-
-    <div class="container"></div>
+    <div class="digital-clock">
+      <h2>Digital Clock</h2>
+      <div class="time">{{ systemTime }}</div>
+    </div>
   `,
   styles: `
+  .digital-clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #2b2b2b;
+  color: #f0f0f0;
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.time {
+  font-size: 2em;
+  font-family: 'Courier New', Courier, monospace;
+}
 `,
 })
 export class DigitalClockComponent {

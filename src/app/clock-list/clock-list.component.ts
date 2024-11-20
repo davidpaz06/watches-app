@@ -86,7 +86,7 @@ export class ClockListComponent {
     'Pendulum Clock',
   ];
 
-  activeIndex: number | null = 1;
+  activeIndex: number | null = 0;
   systemTime: string = '';
 
   clockComponents = [
