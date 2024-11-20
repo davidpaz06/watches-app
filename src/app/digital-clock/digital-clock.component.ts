@@ -22,7 +22,7 @@ import { TimeService } from '../../services/time.service';
   border: 2px solid #f0f0f0;
   border-radius: 10px;
   padding: 20px;
-  width: 200px;
+  width: 250px;
   margin: 0 auto;
 }
 
