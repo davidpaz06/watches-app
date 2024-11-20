@@ -71,7 +71,7 @@ import { NgFor, NgStyle } from '@angular/common';
         background-color: #f0f0f0;
         top: 50%;
         left: 50%;
-        transform-origin: 100%;
+        transform-origin: 0% 50%;
         transform: rotate(90deg);
         transition: transform 0.5s ease-in-out;
       }
@@ -124,9 +124,9 @@ export class AnalogClockComponent implements OnInit {
     const minutes = now.getMinutes();
     const hours = now.getHours();
 
-    const secondDegrees = (seconds / 60) * 360 + 90;
-    const minuteDegrees = (minutes / 60) * 360 + (seconds / 60) * 6 + 90;
-    const hourDegrees = (hours / 12) * 360 + (minutes / 60) * 30 + 90;
+    const secondDegrees = (seconds / 60) * 360 + 270;
+    const minuteDegrees = (minutes / 60) * 360 + (seconds / 60) * 6 + 270;
+    const hourDegrees = (hours / 12) * 360 + (minutes / 60) * 30 + 270;
 
     this.secondHandTransform = `rotate(${secondDegrees}deg)`;
     this.minuteHandTransform = `rotate(${minuteDegrees}deg)`;
