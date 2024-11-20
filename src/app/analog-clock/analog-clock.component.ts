@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
-import { NgStyle } from '@angular/common';
+import { NgFor, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-analog-clock',
@@ -18,6 +17,18 @@ import { NgStyle } from '@angular/common';
         >
           {{ number.value }}
         </div>
+        <div
+          class="hand hour-hand"
+          [ngStyle]="{ transform: hourHandTransform }"
+        ></div>
+        <div
+          class="hand minute-hand"
+          [ngStyle]="{ transform: minuteHandTransform }"
+        ></div>
+        <div
+          class="hand second-hand"
+          [ngStyle]="{ transform: secondHandTransform }"
+        ></div>
       </div>
     </div>
   `,
@@ -36,7 +47,6 @@ import { NgStyle } from '@angular/common';
         border-radius: 50%;
         position: relative;
       }
-
       .center {
         position: absolute;
         top: 50%;
@@ -47,13 +57,36 @@ import { NgStyle } from '@angular/common';
         border-radius: 50%;
         transform: translate(-50%, -50%);
       }
-
       .number {
         position: absolute;
         color: #f0f0f0;
         font-size: 24px;
         text-align: center;
         transform: translate(-50%, -50%);
+      }
+      .hand {
+        position: absolute;
+        width: 50%;
+        height: 4px;
+        background-color: #f0f0f0;
+        top: 50%;
+        left: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        transition: transform 0.5s ease-in-out;
+      }
+      .hour-hand {
+        height: 6px;
+        width: 30%;
+      }
+      .minute-hand {
+        height: 4px;
+        width: 40%;
+      }
+      .second-hand {
+        height: 2px;
+        width: 45%;
+        background-color: red;
       }
     `,
   ],
@@ -69,12 +102,34 @@ export class AnalogClockComponent implements OnInit {
     { value: 7, top: '85%', left: '25%' },
     { value: 8, top: '70%', left: '10%' },
     { value: 9, top: '50%', left: '5%' },
-    { value: 10, top: '30%', left: '10%' },
+    { value: 10, top: '30%', left: '13%' },
     { value: 11, top: '15%', left: '25%' },
     { value: 12, top: '5%', left: '50%' },
   ];
 
+  hourHandTransform: string = '';
+  minuteHandTransform: string = '';
+  secondHandTransform: string = '';
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.updateClockHands();
+    setInterval(() => this.updateClockHands(), 1000);
+  }
+
+  updateClockHands() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
+
+    const secondDegrees = (seconds / 60) * 360 + 90;
+    const minuteDegrees = (minutes / 60) * 360 + (seconds / 60) * 6 + 90;
+    const hourDegrees = (hours / 12) * 360 + (minutes / 60) * 30 + 90;
+
+    this.secondHandTransform = `rotate(${secondDegrees}deg)`;
+    this.minuteHandTransform = `rotate(${minuteDegrees}deg)`;
+    this.hourHandTransform = `rotate(${hourDegrees}deg)`;
+  }
 }
