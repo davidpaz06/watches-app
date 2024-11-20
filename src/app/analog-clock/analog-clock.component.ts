@@ -73,7 +73,6 @@ import { NgFor, NgStyle } from '@angular/common';
         left: 50%;
         transform-origin: 0% 50%;
         transform: rotate(90deg);
-        transition: transform 0.5s ease-in-out;
       }
       .hour-hand {
         height: 6px;
