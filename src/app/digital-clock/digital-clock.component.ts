@@ -12,6 +12,12 @@ import { TimeService } from '../../services/time.service';
     </div>
   `,
   styles: `
+@font-face { 
+  font-family: 'digitalFont'; 
+  src: url('../assets/DS-DIGI.TTF') format('truetype');
+}
+
+
   .digital-clock {
   display: flex;
   flex-direction: column;
@@ -22,13 +28,13 @@ import { TimeService } from '../../services/time.service';
   border: 2px solid #f0f0f0;
   border-radius: 10px;
   padding: 20px;
-  width: 250px;
+  width: 300px;
   margin: 0 auto;
 }
 
 .time {
-  font-size: 2em;
-  font-family: 'Courier New', Courier, monospace;
+  font-size: 4em;
+  font-family: 'digitalFont', Courier, monospace;
 }
 `,
 })

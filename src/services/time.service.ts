@@ -11,7 +11,7 @@ export class TimeService {
   systemTime$ = this.systemTimeSubject.asObservable();
 
   constructor() {
-    setInterval(() => this.updateSystemTime(), 1000); // Actualiza la hora cada segundo
+    setInterval(() => this.updateSystemTime(), 1000);
   }
 
   private getCurrentTime(): string {

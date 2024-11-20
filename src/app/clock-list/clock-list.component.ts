@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DigitalClockComponent } from '../digital-clock/digital-clock.component';
 import { AnalogClockComponent } from '../analog-clock/analog-clock.component';
 import { SandClockComponent } from '../sand-clock/sand-clock.component';
-import { TimeService } from '../../services/time.service'; // Importa el servicio
+import { TimeService } from '../../services/time.service';
 
 @Component({
   selector: 'app-clock-list',
@@ -86,7 +86,7 @@ export class ClockListComponent {
     'Pendulum Clock',
   ];
 
-  activeIndex: number | null = 0;
+  activeIndex: number | null = null;
   systemTime: string = '';
 
   clockComponents = [
