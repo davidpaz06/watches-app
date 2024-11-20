@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TimeService } from '../../services/time.service'; // Importa el servicio
+import { TimeService } from '../../services/time.service';
 
 @Component({
   selector: 'app-digital-clock',
@@ -8,8 +8,11 @@ import { TimeService } from '../../services/time.service'; // Importa el servici
   template: `
     <h2>Digital Clock</h2>
     {{ systemTime }}
+
+    <div class="container"></div>
   `,
-  styles: ``,
+  styles: `
+`,
 })
 export class DigitalClockComponent {
   systemTime: string = '';

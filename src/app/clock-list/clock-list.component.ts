@@ -69,16 +69,6 @@ import { TimeService } from '../../services/time.service'; // Importa el servici
         background-color: #007bff;
         color: white;
       }
-
-      .clock-display {
-        margin-top: 20px;
-        border: 1px solid #ccc;
-      }
-
-      .system-time {
-        margin-top: 20px;
-        font-size: 1.2em;
-      }
     `,
   ],
 })
@@ -96,7 +86,7 @@ export class ClockListComponent {
     'Pendulum Clock',
   ];
 
-  activeIndex: number | null = null;
+  activeIndex: number | null = 1;
   systemTime: string = '';
 
   clockComponents = [
