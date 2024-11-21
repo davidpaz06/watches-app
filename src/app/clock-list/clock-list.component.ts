@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DigitalClockComponent } from '../digital-clock/digital-clock.component';
 import { AnalogClockComponent } from '../analog-clock/analog-clock.component';
 import { SandClockComponent } from '../sand-clock/sand-clock.component';
+import { ProgressBarClockComponent } from '../progress-bar-clock/progress-bar-clock.component';
 import { TimeService } from '../../services/time.service';
 
 @Component({
@@ -69,6 +70,10 @@ import { TimeService } from '../../services/time.service';
         background-color: #007bff;
         color: white;
       }
+
+      .clock-display {
+        margin-bottom: 20px;
+      }
     `,
   ],
 })
@@ -77,7 +82,7 @@ export class ClockListComponent {
     'Digital',
     'Analog',
     'Sand Clock',
-    'Binary',
+    'Progress Bar',
     'Word Clock',
     'Sun Clock',
     'Moon Clock',
@@ -86,13 +91,14 @@ export class ClockListComponent {
     'Pendulum Clock',
   ];
 
-  activeIndex: number | null = null;
+  activeIndex: number | null = 3;
   systemTime: string = '';
 
   clockComponents = [
     DigitalClockComponent,
     AnalogClockComponent,
     SandClockComponent,
+    ProgressBarClockComponent,
   ];
 
   constructor(private timeService: TimeService) {}
