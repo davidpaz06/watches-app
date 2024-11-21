@@ -89,7 +89,6 @@ import { TimeService } from '../../services/time.service';
   .progress-bar {
     width: 100%;
     height: 250px;
-    border: 2px solid red;
     border-radius: 15px;
     overflow: hidden;
     display: flex;
@@ -100,7 +99,6 @@ import { TimeService } from '../../services/time.service';
   .time-container {
     height: 90%;
     width: 33.33%;
-    border: 4px solid blue;
     transition: width 1s linear;
 
     display: flex;
@@ -208,11 +206,11 @@ import { TimeService } from '../../services/time.service';
   }
 
   .ten-seconds{
-    top: 80%;
+    top: 83.33%;
   }
 
   .twenty-seconds{
-    top: 65%;
+    top: 66.66%;
   }
 
   .thirty-seconds{
@@ -220,11 +218,11 @@ import { TimeService } from '../../services/time.service';
   }
 
   .forty-seconds{
-    top: 35%;
+    top: 33.33%;
   }
 
   .fifty-seconds{
-    top: 20%;
+    top: 16.66%;
   }
 
   h3{
@@ -259,13 +257,26 @@ export class ProgressBarClockComponent implements OnInit {
     this.timeService.systemTime$.subscribe((time) => {
       this.systemTime = time;
       this.updateProgressBars();
+      setInterval(() => this.updateProgressBars(), 1000);
     });
   }
 
   updateProgressBars() {
-    const now = new Date(this.systemTime);
-    this.hourProgress = ((now.getHours() % 12) / 12) * 100;
-    this.minuteProgress = (now.getMinutes() / 60) * 100;
-    this.secondProgress = (now.getSeconds() / 60) * 100;
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
+
+    const hourProgress = ((hours % 12) / 12) * 100;
+    const minuteProgress = (minutes / 60) * 100;
+    const secondProgress = (seconds / 60) * 100;
+
+    this.hourProgress = hourProgress;
+    this.minuteProgress = minuteProgress;
+    this.secondProgress = secondProgress;
+
+    console.log('hourProgress:', hourProgress);
+    console.log('minuteProgress:', minuteProgress);
+    console.log('secondProgress:', secondProgress);
   }
 }
