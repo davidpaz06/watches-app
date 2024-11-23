@@ -274,9 +274,5 @@ export class ProgressBarClockComponent implements OnInit {
     this.hourProgress = hourProgress;
     this.minuteProgress = minuteProgress;
     this.secondProgress = secondProgress;
-
-    console.log('hourProgress:', hourProgress);
-    console.log('minuteProgress:', minuteProgress);
-    console.log('secondProgress:', secondProgress);
   }
 }

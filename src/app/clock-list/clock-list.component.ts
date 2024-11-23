@@ -2,8 +2,9 @@ import { NgFor, NgClass, NgIf, NgComponentOutlet } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { DigitalClockComponent } from '../digital-clock/digital-clock.component';
 import { AnalogClockComponent } from '../analog-clock/analog-clock.component';
-import { SandClockComponent } from '../sand-clock/sand-clock.component';
 import { ProgressBarClockComponent } from '../progress-bar-clock/progress-bar-clock.component';
+import { RandomClockComponent } from '../random-clock/random-clock.component';
+import { WordClockComponent } from '../word-clock/word-clock.component';
 import { TimeService } from '../../services/time.service';
 
 @Component({
@@ -81,14 +82,14 @@ export class ClockListComponent {
   clocks: string[] = [
     'Digital',
     'Analog',
-    'Sand Clock',
     'Progress Bar',
+    'Random Clock',
     'Word Clock',
-    'Sun Clock',
-    'Moon Clock',
-    'Water Clock',
-    'Flower Clock',
-    'Pendulum Clock',
+    'Clock 6',
+    'Clock 7',
+    'Clock 8',
+    'Clock 9',
+    'Clock 10',
   ];
 
   activeIndex: number | null = 3;
@@ -97,8 +98,9 @@ export class ClockListComponent {
   clockComponents = [
     DigitalClockComponent,
     AnalogClockComponent,
-    SandClockComponent,
     ProgressBarClockComponent,
+    RandomClockComponent,
+    WordClockComponent,
   ];
 
   constructor(private timeService: TimeService) {}

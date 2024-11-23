@@ -90,7 +90,24 @@ import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 })
 export class RegisterComponent {
   constructor(private router: Router, private auth: Auth) {}
+  validateInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (/\s/.test(input.value)) {
+      input.setCustomValidity('Spaces are not allowed.');
+    } else {
+      input.setCustomValidity('');
+    }
+  }
 
+  ngOnInit() {
+    const form = document.querySelector('form');
+    const inputs = form?.querySelectorAll(
+      'input[type="text"], input[type="email"], input[type="password"]'
+    );
+    inputs?.forEach((input) => {
+      input.addEventListener('input', this.validateInput);
+    });
+  }
   async onSubmit(event: Event) {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
